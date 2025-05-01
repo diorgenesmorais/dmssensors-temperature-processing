@@ -1,0 +1,21 @@
+package com.dms.dmssensors.temperature.processing;
+
+import java.time.Instant;
+import java.time.OffsetDateTime;
+import java.time.OffsetTime;
+import java.time.ZoneId;
+import java.util.UUID;
+
+public class UUIDv7Utils {
+    private UUIDv7Utils() {
+    }
+
+    public static OffsetDateTime extractTimestampFromUUIDv7(UUID uuid) {
+        if (uuid == null) {
+            return null;
+        }
+
+        long timestamp = uuid.getMostSignificantBits() >>> 16;
+        return OffsetDateTime.ofInstant(Instant.ofEpochMilli(timestamp), ZoneId.systemDefault());
+    }
+}

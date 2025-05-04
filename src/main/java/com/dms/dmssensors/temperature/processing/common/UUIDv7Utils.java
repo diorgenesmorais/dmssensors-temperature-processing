@@ -1,8 +1,7 @@
-package com.dms.dmssensors.temperature.processing;
+package com.dms.dmssensors.temperature.processing.common;
 
 import java.time.Instant;
 import java.time.OffsetDateTime;
-import java.time.OffsetTime;
 import java.time.ZoneId;
 import java.util.UUID;
 

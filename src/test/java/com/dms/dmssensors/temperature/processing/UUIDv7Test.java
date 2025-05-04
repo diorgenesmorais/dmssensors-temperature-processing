@@ -1,5 +1,7 @@
 package com.dms.dmssensors.temperature.processing;
 
+import com.dms.dmssensors.temperature.processing.common.IdGenerator;
+import com.dms.dmssensors.temperature.processing.common.UUIDv7Utils;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 

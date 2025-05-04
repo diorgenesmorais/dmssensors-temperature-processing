@@ -1,4 +1,4 @@
-package com.dms.dmssensors.temperature.processing;
+package com.dms.dmssensors.temperature.processing.common;
 
 import com.fasterxml.uuid.Generators;
 import com.fasterxml.uuid.impl.TimeBasedEpochRandomGenerator;

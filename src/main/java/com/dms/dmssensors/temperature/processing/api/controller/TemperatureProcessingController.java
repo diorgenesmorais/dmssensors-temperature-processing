@@ -5,6 +5,7 @@ import com.dms.dmssensors.temperature.processing.common.IdGenerator;
 import io.hypersistence.tsid.TSID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.core.MessagePostProcessor;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -52,7 +53,12 @@ public class TemperatureProcessingController {
 
         String routingKey = "";
 
-        rabbitTemplate.convertAndSend(EXCHANGE_NAME, routingKey, payload);
+        MessagePostProcessor messagePostProcessor =message -> {
+            message.getMessageProperties().setHeader("sensorId", payload.getSensorId().toString());
+            return message;
+        };
+
+        rabbitTemplate.convertAndSend(EXCHANGE_NAME, routingKey, payload, messagePostProcessor);
 
     }
 }
